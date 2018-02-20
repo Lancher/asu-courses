@@ -17,6 +17,27 @@ typedef struct Queue {
     Item *tail;
 } Queue;
 
+void PrintAction(char *act, Item *item) {
+    if (item != NULL)
+        printf("Action: %s %d\n", act, item->val);
+    else
+        printf("Action: %s\n", act);
+}
+
+void PrintQueue(Queue *queue) {
+    Item *cur = queue->head;
+    printf("Queue: [");
+    while (cur != NULL) {
+        if (cur != queue->head)
+            printf(", ");
+        printf("%d", cur->val);
+        if (cur == queue->tail)
+            break;
+        cur = cur->next;
+    }
+    printf("]\n");
+}
+
 Item *NewItem(int val) {
     Item *item = (Item *) malloc(sizeof(Item));
     item->val = val;
@@ -37,6 +58,7 @@ Queue *NewQueue() {
 }
 
 void AddQueue(Queue *queue, Item *item) {
+    PrintAction("Add", item);
     if (queue->head == NULL) {
         queue->head = item;
         queue->tail = item;
@@ -49,6 +71,7 @@ void AddQueue(Queue *queue, Item *item) {
         queue->tail->next = item;
         queue->tail = item;
     }
+    PrintQueue(queue);
 }
 
 Item *DelQueue(Queue *queue) {
@@ -60,6 +83,8 @@ Item *DelQueue(Queue *queue) {
             Item *res = queue->head;
             queue->head = queue->tail = NULL;
             res->prev = res->next = NULL;
+            PrintAction("Del", res);
+            PrintQueue(queue);
             return res;
         } else {
             Item *res = queue->head;
@@ -69,18 +94,22 @@ Item *DelQueue(Queue *queue) {
             prev->next = next;
             queue->head = next;
             res->prev = res->next = NULL;
+            PrintAction("Del", res);
+            PrintQueue(queue);
             return res;
         }
     }
 }
 
 void RotateQ(Queue *queue) {
+    PrintAction("Rotate", NULL);
     if (queue->head == NULL) {
         perror("queue empty error!!");
         exit(EXIT_FAILURE);
     }
     queue->head = queue->head->next;
     queue->tail = queue->tail->next;
+    PrintQueue(queue);
 }
 
 #endif //QUEUE_Q_H

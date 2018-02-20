@@ -1,0 +1,65 @@
+--- Run testcase1 ---
+Action: Add 1
+Queue: [1]
+Action: Add 2
+Queue: [1, 2]
+Action: Add 3
+Queue: [1, 2, 3]
+Action: Add 4
+Queue: [1, 2, 3, 4]
+Action: Add 5
+Queue: [1, 2, 3, 4, 5]
+Action: Del 1
+Queue: [2, 3, 4, 5]
+Action: Del 2
+Queue: [3, 4, 5]
+Action: Del 3
+Queue: [4, 5]
+Action: Del 4
+Queue: [5]
+Action: Del 5
+Queue: []
+--- Run testcase2 ---
+Action: Add 1
+Queue: [1]
+Action: Rotate
+Queue: [1]
+Action: Rotate
+Queue: [1]
+Action: Rotate
+Queue: [1]
+Action: Add 2
+Queue: [1, 2]
+Action: Add 3
+Queue: [1, 2, 3]
+Action: Del 1
+Queue: [2, 3]
+Action: Del 2
+Queue: [3]
+Action: Del 3
+Queue: []
+--- Run testcase3 ---
+Action: Add 1
+Queue: [1]
+Action: Add 2
+Queue: [1, 2]
+Action: Add 3
+Queue: [1, 2, 3]
+Action: Rotate
+Queue: [2, 3, 1]
+Action: Rotate
+Queue: [3, 1, 2]
+Action: Add 4
+Queue: [3, 1, 2, 4]
+Action: Add 5
+Queue: [3, 1, 2, 4, 5]
+Action: Del 3
+Queue: [1, 2, 4, 5]
+Action: Del 1
+Queue: [2, 4, 5]
+Action: Del 2
+Queue: [4, 5]
+Action: Del 4
+Queue: [5]
+Action: Del 5
+Queue: []

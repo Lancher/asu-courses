@@ -16,7 +16,7 @@ int main() {
     Item *item5 = NewItem(5);
 
     // testcase 1: push 5 items, then pop 5 items
-    printf("Run testcase1\n");
+    printf("--- Run testcase1 ---\n");
 
     AddQueue(queue, item1);  // [1]
     AddQueue(queue, item2);  // [1, 2]
@@ -52,7 +52,7 @@ int main() {
     assert( 5 == item->val );  // 5 == 5
 
     // testcase 2: push 1 items, rotate 3 times, push 2 items, pop all 3 items
-    printf("Run testcase2\n");
+    printf("--- Run testcase2 ---\n");
 
     AddQueue(queue, item1);  // [1]
     RotateQ(queue);          // [1]
@@ -79,7 +79,7 @@ int main() {
     assert( 3 == item->val );  // 3 == 3
 
     // testcase 3: push 3 items, rotate 2 times, push 2 items, pop all 5 items
-    printf("Run testcase3\n");
+    printf("--- Run testcase3 ---\n");
 
     AddQueue(queue, item1);  // [1]
     AddQueue(queue, item2);  // [1, 2, ]
